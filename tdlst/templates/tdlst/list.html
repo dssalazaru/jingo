@@ -1,0 +1,18 @@
+{% extends 'tdlst/base.html' %}
+
+{% block title%}List Page{% endblock %}
+
+{% block content %}
+<h2><a href="create">New List</a></h2>
+<table>
+    <tr>
+        <th>ID</th><th>Task</tg>
+    </tr>
+    {% for lst in lsts %}
+        <tr>
+            <td>{{lst.id}}</td>
+            <td><a href="{{lst.id}}">{{lst.name}}</a></td>
+        </tr>
+    {% endfor %}
+</table>
+{% endblock %}

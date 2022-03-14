@@ -36,6 +36,8 @@ item = t.get(id=1)
 item.delete()
 ===
 
+DJANGO ADMIN: python manage.py createsuperuser
+
 
 
 

@@ -1,0 +1,41 @@
+{% extends 'tdlst/base.html' %}
+
+{% block title%}List Page{% endblock %}
+
+{% block content %}
+<h2>{{lst.name}}</h2>
+<form action="#" method="post">
+{% csrf_token %}
+{% if items %}
+<table>
+    <tr>
+        <th>Task</th><th>Complete</th>
+        {% if edit %}
+        <th>Remove</th>
+        {% endif %}
+    </tr>
+    {% for item in items %}
+    <tr>
+        <td>{{item.text}}</td>
+        <td>
+        {% if item.complete %}
+        <input type="checkbox" value="clicked" name="c{{item.id}}" checked>
+        {% else %}
+        <input type="checkbox" value="clicked" name="c{{item.id}}">
+        {% endif %}
+        </td>
+        {% if edit %}
+        <td><button type="submit" name="r{{item.id}}" value=""><i class="fa-solid fa-trash-can"></i></button></td>
+        {% endif %}
+    </tr>
+    {% endfor %}
+</table>
+{% else %}
+    <h2 style="color:#f00;">No items to show</h2>
+{% endif%}
+    <input type="submit" name="save" value="Save">
+    <input type="text" name="new" value="">
+    <input type="submit" name="newItem" value="newItem">
+    <input type="submit" name="edit" value="edit">
+</form>
+{% endblock %}

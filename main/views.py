@@ -5,7 +5,4 @@ from django.http import HttpResponse
 # Create your views here.
 
 def index(response):
-    return render(response, "main/base.html", {'name':'DSSU'})
-
-def home(response):
-    return render(response, "main/home.html", {'name':'DScode'})
+    return render(response, "main/home.html", {'name':'DSSU'})

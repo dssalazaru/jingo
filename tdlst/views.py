@@ -98,6 +98,9 @@ def edit(response, idlist):
                 if str(item.id) == response.POST['rem']: item.delete()
         elif response.POST.get('edit'):
             return HttpResponseRedirect('/sqlite/tdlst/%i' %lst.id)
+        elif response.POST.get('del'):
+            lst.delete()
+            return HttpResponseRedirect('/sqlite/tdlst')
         items = lst.item_set.all()
     return render(response, 'tdlst/edit.html', {'lst':lst,'items':items})
 

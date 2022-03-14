@@ -4,6 +4,7 @@
 
 {% block content %}
 <h2>{{lst.name}}</h2>
+<h3 style="color:#f60;">[EDITING]</h3>
 <form action="#" method="post">
 {% csrf_token %}
 {% if items %}
@@ -32,5 +33,7 @@
     <input type="text" name="new" value="">
     <input type="submit" name="newItem" value="newItem">
     <input type="submit" name="edit" value="edit">
+    <br>
+    <input style="color:#f00;" type="submit" name="del" value="Delete list">
 </form>
 {% endblock %}

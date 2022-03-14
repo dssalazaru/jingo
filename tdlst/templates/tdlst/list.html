@@ -3,16 +3,11 @@
 {% block title%}List Page{% endblock %}
 
 {% block content %}
-<h2><a href="create">New List</a></h2>
-<table>
-    <tr>
-        <th>ID</th><th>Task</tg>
-    </tr>
-    {% for lst in lsts %}
-        <tr>
-            <td>{{lst.id}}</td>
-            <td><a href="{{lst.id}}">{{lst.name}}</a></td>
-        </tr>
-    {% endfor %}
-</table>
+<h2>List</h2>
+<ul class="list-group list-group-flush">
+{% for lst in lsts %}
+    <li class="list-group-item"><a href="{{lst.id}}">{{lst.name}}</a></li>
+{% endfor %}
+</ul>
+<div class="mt-2 text-center"><a href="create">New List</a></div>
 {% endblock %}

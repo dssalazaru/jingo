@@ -3,39 +3,45 @@
 {% block title%}List Page{% endblock %}
 
 {% block content %}
-<h2>{{lst.name}}</h2>
+<h2 class="fs-2 fw-bold">{{lst.name}}</h2>
 <form action="#" method="post">
 {% csrf_token %}
 {% if items %}
-<table>
-    <tr>
-        <th>Task</th><th>Complete</th>
+<div class="table-responsive">
+<table class="table align-middle">
+    <thead class="table-light">
+        <tr class="text-center">
+            <th scope="">Task</th>
+            <th scope="">Complete</th>
         {% if edit %}
         <th>Remove</th>
         {% endif %}
     </tr>
+    </thead>
     {% for item in items %}
     <tr>
-        <td>{{item.text}}</td>
-        <td>
+        <td scope="text-center">
         {% if item.complete %}
         <input type="checkbox" value="clicked" name="c{{item.id}}" checked>
         {% else %}
         <input type="checkbox" value="clicked" name="c{{item.id}}">
         {% endif %}
         </td>
-        {% if edit %}
-        <td><button type="submit" name="r{{item.id}}" value=""><i class="fa-solid fa-trash-can"></i></button></td>
-        {% endif %}
+        <td>{{item.text}}</td>
     </tr>
     {% endfor %}
 </table>
+</div>
 {% else %}
     <h2 style="color:#f00;">No items to show</h2>
 {% endif%}
-    <input type="submit" name="save" value="Save">
-    <input type="text" name="new" value="">
-    <input type="submit" name="newItem" value="newItem">
-    <input type="submit" name="edit" value="edit">
+<div class="mt-3 d-flex gap-3 justify-content-center">
+<input class="btn btn-secondary" type="submit" name="save" value="Save">
+<div class="btn-group">
+        <input class="input-group-tex" type="text" name="new" value="">
+        <input class="btn btn-secondary" type="submit" name="newItem" value="newItem">
+    </div>
+    <input class="btn btn-secondary" type="submit" name="edit" value="edit">
+</div>
 </form>
 {% endblock %}

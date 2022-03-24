@@ -38,7 +38,16 @@ item.delete()
 
 DJANGO ADMIN: python manage.py createsuperuser
 
+=== settings.py crispy-forms
 
+pip install django-crispy-forms
+
+add APP:
+
+    'crispy_forms',
+    'main.apps.MainConfig',
+
+add at END: CRISPY_TEMPLATE_PACK='bootstrap4'
 
 
 

@@ -1,8 +1,9 @@
-{% extends 'tdlst/base.html' %}
+{% extends 'main/base.html' %}
 
 {% block title%}List Page{% endblock %}
 
 {% block content %}
+<h1 class="mt-2">ToDoList By DSSU</h1>
 <h2 class="fs-2 fw-bold">{{lst.name}}</h2>
 <form action="#" method="post">
 {% csrf_token %}
@@ -11,8 +12,8 @@
 <table class="table align-middle">
     <thead class="table-light">
         <tr class="text-center">
-            <th scope="">Task</th>
-            <th scope="">Complete</th>
+            <th class="col-2">Status</th>
+            <th scope="col-10">Task</th>
         {% if edit %}
         <th>Remove</th>
         {% endif %}
@@ -20,14 +21,14 @@
     </thead>
     {% for item in items %}
     <tr>
-        <td scope="text-center">
+        <td class="text-center">
         {% if item.complete %}
         <input type="checkbox" value="clicked" name="c{{item.id}}" checked>
         {% else %}
         <input type="checkbox" value="clicked" name="c{{item.id}}">
         {% endif %}
         </td>
-        <td>{{item.text}}</td>
+        <td class="border-start">{{item.text}}</td>
     </tr>
     {% endfor %}
 </table>

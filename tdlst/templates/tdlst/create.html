@@ -1,8 +1,9 @@
-{% extends 'tdlst/base.html' %}
+{% extends 'main/base.html' %}
 
 {% block title %} Create new List {% endblock%}
 
 {% block content %}
+<h1 class="mt-2">ToDoList By DSSU</h1>
 <h2>Create New To Do List Form!</h2>
 <form method="POST" action="/sqlite/tdlst/create/">
 {% csrf_token %}

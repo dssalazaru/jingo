@@ -5,9 +5,12 @@
 {% block content %}
 <h1 class="mt-2">ToDoList By DSSU</h1>
 <h2>Create New To Do List Form!</h2>
-<form method="POST" action="/sqlite/tdlst/create/">
+<form method="POST" action="/tdlst/create/">
 {% csrf_token %}
 {{form.as_p}}
 <input type="submit" value="Send" name="send">
 </form>
+<div class="d-flex justify-content-center">
+    <a class="mt-3 btn btn-primary mx-auto" href="/tdlst">back</a>
+</div>
 {% endblock%}

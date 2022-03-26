@@ -1,0 +1,15 @@
+{% extends 'main/base.html' %}
+
+{% block title %}
+Views
+{% endblock%}
+
+{% block content %}
+<ul class="list-group list-group-flush"></ul>
+    {% for td in user.todolist.all %}
+    <li class="list-group-item"><a href="/tdlst/{{td.id}}">{{td.name}}</a></li>
+    {% endfor %}
+    <div class="d-flex justify-content-center">
+    <a class="mt-3" href="/tdlst/create"><button class="btn btn-secondary">New list</button></a>
+</div>
+{% endblock%}

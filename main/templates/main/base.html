@@ -8,10 +8,14 @@
 
     <style type="text/css">
         button i {
-            font-size: 1.2rem;
+            font-size: 1rem;
         }
 
-        /* button {border: 0; background: none; cursor:pointer;} */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
         .sidenav {
             height: 100%;
@@ -59,22 +63,33 @@
     <div class="sidenav">
         <div class="btn-group-vertical mt-5 d-grid">
             <a class="btn btn-secondary" href="/">Main</a>
-            <a class="btn btn-secondary" href="/sqlite/register">Register</a>
-            <a class="btn btn-secondary" href="/sqlite/login">Login</a>
-            <a class="btn btn-secondary" href="/sqlite/tdlst/">TDLST</a>
-            <a class="btn btn-secondary" href="/sqlite/tdlst/create">TDLST/Create</a>
+            <!-- <a class="btn btn-secondary" href="/login">Login</a>
+            <a class="btn btn-secondary" href="/register">Register</a> -->
+            <a class="btn btn-secondary" href="/tdlst/">TDLST</a>
         </div>
     </div>
     <div id="content" name="content" class="main">
         <div class="row justify-content-center">
             <div class="col-8">
-                <h1 class="mt-2">DSSU JINGO</h1>
+                <div class="d-flex justify-content-between">
+                    <h1 class="mt-2">DSSU JINGO</h1>
+                    <div class="d-flex justify-content-center flex-column text-center">
+                        {% if user.is_authenticated %}
+                        <span>Welcome, {{user}}</span>
+                        <a class="badge bg-danger" href="/logout">Exit</a>
+                        {% else %}
+                        <a href="/login"><span class="badge bg-secondary">Login</span></a>
+                        <a href="/register"><span class="badge bg-warning text-dark">Register</span></a>
+                        {% endif %}
+                    </div>
+                </div>
                 <hr class="mt-0 mb-4">
+                <!-- {% if user.is_authenticated %} -->
+                <!-- {% else %} -->
+                <!-- <p><a href="/login">Login here</a></p> -->
+                <!-- {% endif%} -->
                 {% block content %}
                 {% endblock %}
-                <div class="d-flex justify-content-center">
-                    <a class="mt-3 btn btn-primary mx-auto" href="/">back</a>
-                </div>
             </div>
         </div>
     </div>
